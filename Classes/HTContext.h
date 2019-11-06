@@ -57,7 +57,8 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param launchOptions from AppDelegate
  */
-+ (void)initWithParameters:(HTParameters *)parameters launchOptions:(NSDictionary *)launchOptions;
++ (void)initWithlaunchOptions:(NSDictionary *)launchOptions
+                   Parameters:(void(^)(HTParameters*))block;
 
 /**
  * 获取协议的执行对象

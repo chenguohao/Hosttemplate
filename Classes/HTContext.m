@@ -148,10 +148,24 @@ static inline void ASYNC_EXECUTE_IN_QUEUE(dispatch_block_t block) {
     return s_context;
 }
 
-+ (void)initWithParameters:(HTParameters *)parameters launchOptions:(NSDictionary *)launchOptions
++ (void)initWithlaunchOptions:(NSDictionary *)launchOptions
+                   Parameters:(void(^)(HTParameters*))block
 {
     HTContext *context = [self shared];
-    context->_parameters = parameters;
+    HTParameters* params = [HTParameters new];
+    
+    if (block){
+        block(params);
+    }
+    
+    NSArray<HTWrapperDeclare *> *declares = AllWrapperDeclares();
+    for (HTWrapperDeclare* declare in declares){
+        if ([declare.wrapper respondsToSelector:@selector(setupSDKParam:)]){
+            [declare.wrapper setupSDKParam:params];
+        }
+    }
+    
+    context->_parameters = params;
     context->_launchOptions = launchOptions;
     [context onInit];
 }

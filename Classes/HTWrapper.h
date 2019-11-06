@@ -10,7 +10,7 @@
 #define HTWrapper_h
 
 #import <Foundation/Foundation.h>
-
+@class HTParameters;
 @protocol IHTWrapper <NSObject>
 /// 要求在主线程初始化SDK
 @property (nonatomic, readonly) BOOL requireMainQueue;
@@ -27,6 +27,9 @@
 /// SDK的实现类，用于识别协议接口调用
 /// 用于延迟调用，如果不需要实现该功能，直接返回nil即可
 - (Class)classForProtocol:(Protocol *)proto;
+
+///  配置初始化参数
+- (void)setupSDKParam:(HTParameters*)parameters;
 
 /// 依赖哪些SDK先初始化完成，如果返回空的话就是启动初始化
 - (NSArray<Protocol *> *)waitForProtocols;
