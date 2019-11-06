@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'Hosttemplate'
-  spec.version      = '1.0.0'
+  spec.version      = '1.0.2'
   spec.license      = { :type => 'BSD' }
   spec.authors      = { 'MTP' => 'mtp@huya.com' }
   spec.summary      = 'Modular'

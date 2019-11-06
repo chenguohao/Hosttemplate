@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isDebug;
 @property (nonatomic, assign) BOOL isOversea;
 @property (nonatomic, strong) NSString *deviceId;
+@property (nonatomic, strong) NSString *appId;
 
 @property (nonatomic, strong) NSString *crashAppId;
 @property (nonatomic, assign) BOOL enableANRReport;
